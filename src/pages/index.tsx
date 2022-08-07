@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import TypeInput from '../components/TypeInput';
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
 
       <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
         <div className="container bg-secondary-dark w-2/3">Typing practice</div>
+        <TypeInput />
       </main>
     </>
   );
