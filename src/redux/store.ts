@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import typeInputSlice from './slices/TypeInputSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    typeInput: typeInputSlice.reducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
