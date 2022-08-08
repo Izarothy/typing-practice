@@ -1,8 +1,24 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import TypeInput from '../components/TypeInput';
+import { useAppSelector } from '../lib/hooks';
+import { setPracticeText } from '../redux/slices/practiceTextSlice';
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('/api/getPracticeText');
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+      dispatch(setPracticeText(data));
+    })();
+  }, []);
+
   return (
     <>
       <Head>
