@@ -28,9 +28,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="screen min-h-screen flex relative flex-col justify-center p-4 bg-main">
-        <TypeInput />
-        <PracticeText />
+      <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
+        <div className="relative">
+          <TypeInput />
+          <PracticeText />
+        </div>
       </main>
     </>
   );
