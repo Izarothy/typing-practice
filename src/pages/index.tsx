@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PracticeText from '../components/PracticeText';
 import TypeInput from '../components/TypeInput';
 import { useAppSelector } from '../lib/hooks';
 import { setPracticeText } from '../redux/slices/practiceTextSlice';
@@ -27,9 +28,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
-        <div className="container bg-secondary-dark w-2/3">Typing practice</div>
+      <main className="screen min-h-screen flex relative flex-col justify-center p-4 bg-main">
         <TypeInput />
+        <PracticeText />
       </main>
     </>
   );

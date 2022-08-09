@@ -13,7 +13,11 @@ const TypeInput = () => {
   const input = useAppSelector((state) => state.typeInput.value);
 
   return (
-    <input type="text" className="fixed bg-secondary-dark" onChange={(e) => handleTypeInput(e)} />
+    <input
+      type="text"
+      className="absolute left-8 bg-white/0 text-white/0 focus:outline-none"
+      onChange={(e) => handleTypeInput(e)}
+    />
   );
 };
 
