@@ -9,21 +9,34 @@ const TypeInput = () => {
 
   const practiceText = useAppSelector((state) => state.practiceText.value);
   const currentTextIndex = useAppSelector((state) => state.currentTextIndex.value);
-
   const handleTypeInput = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setTypeInput(e.target.value));
-
-    if (e.target.value[currentTextIndex] === practiceText[currentTextIndex]) console.log('');
     dispatch(incrementCurrentTextIndex(1));
+
+    if (practiceText[currentTextIndex] === ' ') return;
+
+    const currEl = document.querySelector(`#L${currentTextIndex}`);
+
+    if (e.target.value[currentTextIndex] === practiceText[currentTextIndex]) {
+      currEl?.classList.add('text-green-500');
+      return;
+    }
+
+    currEl?.classList.add('text-red-500');
   };
 
   return (
-    <input
-      type="text"
-      autoFocus
-      className="absolute left-8 text-white/0 focus:outline-none"
-      onChange={(e) => handleTypeInput(e)}
-    />
+    <>
+      <input
+        type="text"
+        autoFocus
+        className="absolute left-8 bg-white/0 text-white/0 focus:outline-none"
+        onChange={(e) => handleTypeInput(e)}
+        onKeyDown={(e) => {
+          if (e.key === 'Backspace') e.preventDefault();
+        }}
+      />
+    </>
   );
 };
 
