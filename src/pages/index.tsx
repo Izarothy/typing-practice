@@ -5,10 +5,14 @@ import { useDispatch } from 'react-redux';
 import CharacterCount from '../components/CharacterCount';
 import PracticeText from '../components/PracticeText';
 import TypeInput from '../components/TypeInput';
+import { useAppSelector } from '../lib/hooks';
 import { setPracticeText } from '../redux/slices/practiceTextSlice';
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
+  const practiceState = useAppSelector((state) => state.practiceState.value);
+  const textShown = practiceState.reason !== 'Ended';
+
   useEffect(() => {
     (async () => {
       const res = await fetch('/api/getPracticeText');
@@ -30,10 +34,12 @@ const Home: NextPage = () => {
 
       <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
         <CharacterCount />
-        <div className="relative">
-          <TypeInput />
-          <PracticeText />
-        </div>
+        {textShown && (
+          <div className="relative">
+            <TypeInput />
+            <PracticeText />
+          </div>
+        )}
       </main>
     </>
   );
