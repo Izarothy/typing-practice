@@ -11,7 +11,10 @@ const TypeInput = () => {
   const practiceText = useAppSelector((state) => state.practiceText.value);
   const currentTextIndex = useAppSelector((state) => state.currentTextIndex.value);
   const handleTypeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    if (currentTextIndex === 0) dispatch(setPracticeState({ isOpen: true, reason: 'Started' }));
+    // Typing starts
+    if (currentTextIndex === 0) {
+      dispatch(setPracticeState({ isOpen: true, reason: 'Started' }));
+    }
 
     dispatch(setTypeInput(e.target.value));
     dispatch(incrementCurrentTextIndex(1));
@@ -20,15 +23,16 @@ const TypeInput = () => {
 
     const currEl = document.querySelector(`#L${currentTextIndex}`);
 
+    // Color the HTML elements based on whether the text is matching
     if (e.target.value[currentTextIndex] === practiceText[currentTextIndex]) {
       currEl?.classList.add('text-green-500');
     } else {
       currEl?.classList.add('text-red-500');
     }
 
+    // Typing ends
     if (currentTextIndex === practiceText.length - 1) {
       dispatch(setPracticeState({ isOpen: false, reason: 'Ended' }));
-      return;
     }
   };
 
