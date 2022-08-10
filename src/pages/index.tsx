@@ -2,9 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import CharacterCount from '../components/CharacterCount';
 import PracticeText from '../components/PracticeText';
 import TypeInput from '../components/TypeInput';
-import { useAppSelector } from '../lib/hooks';
 import { setPracticeText } from '../redux/slices/practiceTextSlice';
 
 const Home: NextPage = () => {
@@ -29,6 +29,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
+        <CharacterCount />
         <div className="relative">
           <TypeInput />
           <PracticeText />
