@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../lib/hooks';
 import { incrementCurrentTextIndex } from '../redux/slices/currentTextIndexSlice';
+import { setGameOpen } from '../redux/slices/gameOpenSlice';
 import { setTypeInput } from '../redux/slices/typeInputSlice';
 
 const TypeInput = () => {
@@ -10,6 +11,8 @@ const TypeInput = () => {
   const practiceText = useAppSelector((state) => state.practiceText.value);
   const currentTextIndex = useAppSelector((state) => state.currentTextIndex.value);
   const handleTypeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (currentTextIndex === 0) dispatch(setGameOpen(true));
+
     dispatch(setTypeInput(e.target.value));
     dispatch(incrementCurrentTextIndex(1));
 
@@ -21,8 +24,6 @@ const TypeInput = () => {
       currEl?.classList.add('text-green-500');
       return;
     }
-
-    currEl?.classList.add('text-red-500');
   };
 
   return (
