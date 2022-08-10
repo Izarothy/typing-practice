@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CharacterCount from '../components/CharacterCount';
+import PracticeStats from '../components/PracticeStats';
 import PracticeText from '../components/PracticeText';
 import TypeInput from '../components/TypeInput';
 import { useAppSelector } from '../lib/hooks';
@@ -34,11 +35,13 @@ const Home: NextPage = () => {
 
       <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
         <CharacterCount />
-        {textShown && (
+        {textShown ? (
           <div className="relative">
             <TypeInput />
             <PracticeText />
           </div>
+        ) : (
+          <PracticeStats />
         )}
       </main>
     </>
