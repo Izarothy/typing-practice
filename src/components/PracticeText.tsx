@@ -3,13 +3,15 @@ import { useAppSelector } from '../lib/hooks';
 
 const PracticeText = () => {
   const practiceText = useAppSelector((state) => state.practiceText.value);
+
   return (
     <div>
-      {practiceText.split('').map((letter, idx) => (
-        <span key={idx} id={`L${idx.toString()}`}>
-          {letter}
-        </span>
-      ))}
+      {practiceText &&
+        practiceText.split('').map((letter, idx) => (
+          <span key={idx} id={`L${idx.toString()}`}>
+            {letter}
+          </span>
+        ))}
     </div>
   );
 };

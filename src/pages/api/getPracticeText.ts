@@ -3,12 +3,13 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../server/db/client';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const text = `All that is gold does not glitter,
-Not all those who wander are lost;
-The old that is strong does not wither,
-Deep roots are not reached by the frost.`; // Will be replaced by a random object from DB
+  const texts = await prisma.text.findMany();
 
-  res.status(200).json(text);
+  const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+  if (randomText) return res.status(200).json(randomText.content);
+
+  res.status(500).send('Internal error');
 };
 
 export default handler;
