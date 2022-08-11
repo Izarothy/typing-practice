@@ -33,7 +33,8 @@ const typeInputSlice = createSlice({
   },
 });
 
-export const { setTypeInput } = typeInputSlice.actions;
+export const { setTypeInput, incrementCorrectCharacters, incrementInCorrectCharacters } =
+  typeInputSlice.actions;
 
 export const TypeInput = (state: AppState) => state.typeInput.value;
 
