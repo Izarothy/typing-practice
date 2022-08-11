@@ -29,7 +29,7 @@ const practiceTimeSlice = createSlice({
       state: { value: { startTime: number; endTime: number } },
       action: PayloadAction<number>
     ) => {
-      state.value.startTime = action.payload;
+      state.value.endTime = action.payload;
     },
   },
 });

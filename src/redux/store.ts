@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import currentTextIndexSlice from './slices/currentTextIndexSlice';
 import practiceStateSlice from './slices/practiceStateSlice';
 import practiceTextSlice from './slices/practiceTextSlice';
-import practiceTimeSlice from './slices/practiceTime';
+import practiceTimeSlice from './slices/practiceTimeSlice';
 import typeInputSlice from './slices/typeInputSlice';
 
 export const store = configureStore({
