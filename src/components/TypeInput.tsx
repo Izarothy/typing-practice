@@ -55,7 +55,7 @@ const TypeInput = ({ inputRef }: TProps) => {
       <input
         type="text"
         autoFocus
-        className="absolute left-8 bg-white/0 text-white/0 focus:outline-none"
+        className="absolute -left-2 w-2 bg-white/0 text-white/0 caret-white focus:outline-none"
         onChange={(e) => handleTypeInput(e)}
         onKeyDown={(e) => {
           if (e.key === 'Backspace') e.preventDefault();
