@@ -4,7 +4,11 @@ import { useAppSelector } from '../lib/hooks';
 import { incrementCurrentTextIndex } from '../redux/slices/currentTextIndexSlice';
 import { setPracticeState } from '../redux/slices/practiceStateSlice';
 import { setEndTime, setStartTime } from '../redux/slices/practiceTimeSlice';
-import { setTypeInput } from '../redux/slices/typeInputSlice';
+import {
+  incrementCorrectCharacters,
+  incrementInCorrectCharacters,
+  setTypeInput,
+} from '../redux/slices/typeInputSlice';
 
 const TypeInput = () => {
   const dispatch = useDispatch();
@@ -28,8 +32,10 @@ const TypeInput = () => {
 
     // Color the HTML elements based on whether the text is matching
     if (e.target.value[currentTextIndex] === practiceText[currentTextIndex]) {
+      dispatch(incrementCorrectCharacters());
       currEl?.classList.add('text-green-500');
     } else {
+      dispatch(incrementInCorrectCharacters());
       currEl?.classList.add('text-red-500');
     }
 

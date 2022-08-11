@@ -4,14 +4,16 @@ import { useAppSelector } from '../lib/hooks';
 
 const PracticeStats = () => {
   const { startTime, endTime } = useAppSelector((state) => state.practiceTime.value);
-  const practiceText = useAppSelector((state) => state.practiceText.value);
+  const correctCharacters = useAppSelector((state) => state.typeInput.value.correctCharacters);
+  const incorrectCharacters = useAppSelector((state) => state.typeInput.value.incorrectCharacters);
 
-  const characterCount = practiceText.length;
-
-  const { CPM, secondsElapsed } = getPracticeStats(characterCount, startTime, endTime);
+  const { CPM, secondsElapsed } = getPracticeStats(correctCharacters, startTime, endTime);
   return (
-    <div>
-      CPM: {CPM} <br /> Seconds elapsed: {secondsElapsed}
+    <div className="flex flex-col">
+      <span>CPM: {CPM}</span>
+      <span>Seconds elapsed: {secondsElapsed}</span>
+      <span>Characters right: {correctCharacters}</span>
+      <span>Characters wrong: {incorrectCharacters}</span>
     </div>
   );
 };
