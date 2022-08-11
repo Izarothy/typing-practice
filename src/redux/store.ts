@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import currentTextIndexSlice from './slices/currentTextIndexSlice';
 import practiceStateSlice from './slices/practiceStateSlice';
 import practiceTextSlice from './slices/practiceTextSlice';
+import practiceTimeSlice from './slices/practiceTime';
 import typeInputSlice from './slices/typeInputSlice';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     practiceText: practiceTextSlice.reducer,
     currentTextIndex: currentTextIndexSlice.reducer,
     practiceState: practiceStateSlice.reducer,
+    practiceTime: practiceTimeSlice.reducer,
   },
 });
 
