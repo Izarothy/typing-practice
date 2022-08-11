@@ -2,19 +2,33 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppState } from '../store';
 
 type typeInputState = {
-  value: string;
+  value: {
+    typeInput: string;
+    correctCharacters: number;
+    incorrectCharacters: number;
+  };
 };
 
 const initialState: typeInputState = {
-  value: '',
+  value: {
+    typeInput: '',
+    correctCharacters: 0,
+    incorrectCharacters: 0,
+  },
 };
 
 const typeInputSlice = createSlice({
   name: 'typeInput',
   initialState,
   reducers: {
-    setTypeInput: (state: { value: string }, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    setTypeInput: (state: typeInputState, action: PayloadAction<string>) => {
+      state.value.typeInput = action.payload;
+    },
+    incrementCorrectCharacters: (state: typeInputState) => {
+      state.value.correctCharacters += 1;
+    },
+    incrementInCorrectCharacters: (state: typeInputState) => {
+      state.value.incorrectCharacters += 1;
     },
   },
 });
