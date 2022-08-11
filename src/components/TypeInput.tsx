@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../lib/hooks';
 import { incrementCurrentTextIndex } from '../redux/slices/currentTextIndexSlice';
 import { setPracticeState } from '../redux/slices/practiceStateSlice';
+import { setEndTime, setStartTime } from '../redux/slices/practiceTime';
 import { setTypeInput } from '../redux/slices/typeInputSlice';
 
 const TypeInput = () => {
@@ -10,10 +11,12 @@ const TypeInput = () => {
 
   const practiceText = useAppSelector((state) => state.practiceText.value);
   const currentTextIndex = useAppSelector((state) => state.currentTextIndex.value);
+
   const handleTypeInput = (e: ChangeEvent<HTMLInputElement>) => {
     // Typing starts
     if (currentTextIndex === 0) {
       dispatch(setPracticeState({ isOpen: true, reason: 'Started' }));
+      dispatch(setStartTime(Date.now()));
     }
 
     dispatch(setTypeInput(e.target.value));
@@ -33,6 +36,7 @@ const TypeInput = () => {
     // Typing ends
     if (currentTextIndex === practiceText.length - 1) {
       dispatch(setPracticeState({ isOpen: false, reason: 'Ended' }));
+      dispatch(setEndTime(Date.now()));
     }
   };
 
