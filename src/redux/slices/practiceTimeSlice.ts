@@ -3,15 +3,15 @@ import { AppState } from '../store';
 
 type PracticeTimeState = {
   value: {
-    startTime: number | null;
-    endTime: number | null;
+    startTime: number;
+    endTime: number;
   };
 };
 
 const initialState: PracticeTimeState = {
   value: {
-    startTime: null,
-    endTime: null,
+    startTime: 0,
+    endTime: 0,
   },
 };
 
@@ -20,13 +20,13 @@ const practiceTimeSlice = createSlice({
   initialState,
   reducers: {
     setStartTime: (
-      state: { value: { startTime: number | null; endTime: number | null } },
+      state: { value: { startTime: number; endTime: number } },
       action: PayloadAction<number>
     ) => {
       state.value.startTime = action.payload;
     },
     setEndTime: (
-      state: { value: { startTime: number | null; endTime: number | null } },
+      state: { value: { startTime: number; endTime: number } },
       action: PayloadAction<number>
     ) => {
       state.value.startTime = action.payload;
