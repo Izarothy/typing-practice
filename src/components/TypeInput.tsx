@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, LegacyRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../lib/hooks';
 import { incrementCurrentTextIndex } from '../redux/slices/currentTextIndexSlice';
@@ -10,7 +10,11 @@ import {
   setTypeInput,
 } from '../redux/slices/typeInputSlice';
 
-const TypeInput = () => {
+type TProps = {
+  inputRef: LegacyRef<HTMLInputElement>;
+};
+
+const TypeInput = ({ inputRef }: TProps) => {
   const dispatch = useDispatch();
 
   const practiceText = useAppSelector((state) => state.practiceText.value);
@@ -56,6 +60,7 @@ const TypeInput = () => {
         onKeyDown={(e) => {
           if (e.key === 'Backspace') e.preventDefault();
         }}
+        ref={inputRef}
       />
     </>
   );

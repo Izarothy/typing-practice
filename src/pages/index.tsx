@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import CharacterCount from '../components/CharacterCount';
 import PracticeStats from '../components/PracticeStats';
@@ -13,6 +13,8 @@ const Home: NextPage = () => {
   const dispatch = useDispatch();
   const practiceState = useAppSelector((state) => state.practiceState.value);
   const textShown = practiceState.reason !== 'Ended';
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     (async () => {
@@ -33,11 +35,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main">
+      <main
+        className="screen min-h-screen flex flex-col items-center justify-center p-4 bg-main"
+        onClick={() => inputRef && inputRef.current?.focus()}
+      >
         <CharacterCount />
         {textShown ? (
           <div className="relative">
-            <TypeInput />
+            <TypeInput inputRef={inputRef} />
             <PracticeText />
           </div>
         ) : (
