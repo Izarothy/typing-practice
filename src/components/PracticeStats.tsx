@@ -10,7 +10,9 @@ const PracticeStats = () => {
   const { CPM, secondsElapsed } = getPracticeStats(correctCharacters, startTime, endTime);
   return (
     <div className="flex flex-col">
-      <span>CPM: {CPM}</span>
+      <span>
+        CPM: {CPM} (approx. {CPM / 5} WPM)
+      </span>
       <span>Seconds elapsed: {secondsElapsed}</span>
       <span>Characters right: {correctCharacters}</span>
       <span>Characters wrong: {incorrectCharacters}</span>
