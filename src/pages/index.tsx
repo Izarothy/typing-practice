@@ -30,6 +30,8 @@ const Home: NextPage = () => {
       const data = await res.json();
       dispatch(setPracticeText(data));
     })();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
