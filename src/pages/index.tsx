@@ -20,7 +20,12 @@ const Home: NextPage = () => {
     (async () => {
       const res = await fetch('/api/getPracticeText');
 
-      if (!res.ok) return;
+      if (!res.ok)
+        return dispatch(
+          setPracticeText(
+            'This is a fallback text, as there was an internal error while fetching a proper one.'
+          )
+        );
 
       const data = await res.json();
       dispatch(setPracticeText(data));
